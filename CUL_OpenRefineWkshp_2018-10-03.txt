@@ -1,0 +1,52 @@
+Columbia University Libraries
+Workshop: OpenRefine
+Part 1: Data Transformation with OpenRefine
+October 3, 2018
+Butler Library 306
+
+Ryan Mendenhall
+trm2151@columbia.edu
+212-851-2452
+
+Set up: 
+
+Download files from:
+https://bit.ly/2y6LVrx
+[Full URL]
+https://github.com/timothy-mendenhall/CUL_OpenRefineWkshp_2018-10-03
+
+If OpenRefine doesn't open in your browser, or if you accidentally close the browser window with OpenRefine, try plugging in one of the following addresses:
+
+http://127.0.0.1:3333
+http://localhost:3333
+
+
+Copy-and-paste: Regular Expressions (Regex) and GREL for exercises
+GREL Syntax for regexes : value.replace(/{regex}/, "{replacement}")
+
+In demo: 
+Regex to remove parenthetical qualifiers from Genre column:
+value.replace(/ \(.+/,"")
+
+Exercise 6
+value.replace(/\.$/, "")
+
+Exercise 7
+value.replace(/(\d{2})\/(\d{2})\/(\d{4})/, "$3-$1-$2")
+
+Demo: Text filter for every record with a single-word subject in Subject column:
+^[a-zA-Z]+$
+
+
+Exercise 9:
+
+In Collection column, perform an Edit Cells-->Transform task with the GREL expression:
+cells["Location"].value + "; " + value
+
+ALTERNATE method: In Collection column, Edit Column --> Add column based on this column
+cells["Location"].value + "; " + value
+
+ALTERNATE method (use when viewing data in record view, discussed in the Splitting/Joining cells section): In Collection column, perform an Edit Cells-->Transform task with the GREL expression:
+row.record.cells.Location.value[0] + ", " + value
+
+
